@@ -24,17 +24,7 @@ const userSchema = {
 const Item = mongoose.model("Item", itemsSchema);
 const User = mongoose.model("User", userSchema);
 
-const item1 = new Item({
-    name: "Welcome to your Todo List"
-})
-const item2 = new Item({
-    name: "Hit + button to add new item"
-})
-const item3 = new Item({
-    name: "<-- hit this to delete an item"
-})
-
-const defaultItems = [item1,item2,item3];
+const defaultItems = [];
 
 let activeUser = null;
 
@@ -79,12 +69,7 @@ router.get('/login',(req,res) =>{
     let day = date.getDay();
     res.render('login',{kindof: "Today"})
 })
-router.get('/work',(req,res) =>{
-    res.render('list',{listTitle: 'Work List', newListItems: workItems})
-})
-router.get('/about',(req,res) =>{
-    res.render('about')
-})
+
 
 
 router.post('/', (req,res) =>{
@@ -105,9 +90,6 @@ router.post('/', (req,res) =>{
     
 })
 
-router.post('/work', (req,res) => {
-    res.redirect('/work')
-})
 
 router.post('/login', (req,res) =>{
     const name = req.body.username;
