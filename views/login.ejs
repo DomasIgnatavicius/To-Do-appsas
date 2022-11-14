@@ -1,0 +1,16 @@
+<%- include("header") -%>
+  
+
+  <div class="background">
+    
+    <form id= "form" action="login" method="post" class="login-form">
+      <label for="username">Username</label>
+      <input name="username" type="text" placeholder="Name" class="loginFormInout">
+      <label for="password">Password</label>
+      <input name="password" type="password" placeholder="Password" class="loginFormInout">
+      <button type="submit" name = "submit" value="login" class="loginformButton">Login</button>
+      <button type="submit" name = "submit" value="register" class="loginformButton">Register</button>
+    </form>
+  </div>
+
+  <%- include("footer") -%>
