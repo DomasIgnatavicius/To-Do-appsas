@@ -12,14 +12,16 @@
       <form action="delete" method="post">
         <div class="item">
           <input type="checkbox" name="checkbox" value ="<%= item.id%>" onchange="this.form.submit()">
-          <p> <%= item.name  %> </p>
+          <div style="width: 400px;"><p> <%= item.name  %> </p></div>
+          <div><p>2002-22-22</p></div>
         </div>
       </form>
       <% }) %>
 
       <form action="/" method="post" class = "item">
 
-        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <input type="text" name="newItem" class="newItem" placeholder="New Item" autocomplete="off">
+        <input type="date" name="dueDate" class="newItem">
         <button type="submit" name="list" value= <%= listTitle %>>+</button>
     
       </form>

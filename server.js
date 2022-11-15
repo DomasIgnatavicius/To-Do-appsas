@@ -14,7 +14,8 @@ db.on('error',(err) => console.log(err))
 db.once('open',() => console.log('Connected to db'))
 
 const itemsSchema = {
-    name: String
+    name: String,
+    date: Date
 }
 const userSchema = {
     username: String,

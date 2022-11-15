@@ -16,6 +16,10 @@ h1 {
   padding: 10px;
 }
 
+.loginLabel{
+  font-size: 1.2rem;
+  font-family: 'helvetica neue';
+}
 .background{
   width: 430px;
   height: 520px;
@@ -49,7 +53,7 @@ h1 {
 }
 
 form.login-form{
-  height: 420px;
+  height: 350px;
   width: 400px;
   background-color: rgba(255,255,255,0.13);
   position: absolute;
@@ -62,18 +66,6 @@ form.login-form{
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
   padding: 50px 35px;
 }
-
-/* input.loginFormInout{
-  display: block;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(255,255,255,0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-} */
 
 button.loginformButton{
   margin-top: 50px;
@@ -88,7 +80,7 @@ button.loginformButton{
 }
 
 .box {
-  max-width: 400px;
+  max-width: 700px;
   margin: 50px auto;
   background: white;
   border-radius: 5px;
@@ -139,21 +131,35 @@ button {
   border-radius: 50%;
   border-color: transparent;
   background-color: #A683E3;
+  margin-right: 10px;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
 }
 
+.newItem {
+  text-align: center;
+  height: 60px;
+  top: 10px;
+  border: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 200px;
+}
 input[type="text"] {
   text-align: center;
   height: 60px;
   top: 10px;
   border: none;
+  margin-bottom: 10px;
   background: transparent;
   font-size: 20px;
   font-weight: 200;
-  width: 313px;
+  width: 390px;
 }
 input[type="password"] {
   text-align: center;
@@ -163,7 +169,7 @@ input[type="password"] {
   background: transparent;
   font-size: 20px;
   font-weight: 200;
-  width: 313px;
+  width: 390px;
 }
 
 input[type="text"]:focus {
@@ -180,8 +186,4 @@ input[type="password"]:focus {
   opacity: 1;
 }
 
-footer {
-  color: white;
-  color: rgba(0, 0, 0, 0.5);
-  text-align: center;
-}
+
