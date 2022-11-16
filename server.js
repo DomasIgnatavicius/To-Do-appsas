@@ -49,23 +49,26 @@ router.get('/',(req,res) =>{
     if(activeUser === null){
         res.redirect('/login');
     }
-    Item.find({}, (err,foundItems) =>{
-        if(foundItems.length === 0){
-            Item.insertMany(defaultItems,(err) =>{
+    else{
+        Item.find({}, (err,foundItems) =>{
+            if(err){
+                console.log(err);
+            }
+            User.findOne({activeUser},(err,foundUser) =>{
                 if(err){
                     console.log(err);
+                    res.redirect('/');
                 }
                 else{
-                    console.log("Successfully saved default items to db");
-                }
+                    //console.log(foundItem);
+                    console.log(activeUser);
+                    console.log(foundUser);
+                    res.render('list',{listTitle: fullDate, newListItems: foundItems, activeUser: foundUser.username})
+                } 
             })
-            res.redirect('/');
-        }
-        else
-            res.render('list',{listTitle: fullDate, newListItems: foundItems})
-    })
-
-    
+            
+        })
+    }
 })
 router.get('/login',(req,res) =>{
     let day = date.getDay();

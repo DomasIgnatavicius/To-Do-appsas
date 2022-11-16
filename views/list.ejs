@@ -1,6 +1,17 @@
 
 <%- include("header") -%>
 
+<div class="user">
+  <div class="orangeball">
+    <img src="/css/Asset1.png" alt="">
+  </div>
+
+  <div>
+    <%= activeUser %>
+  </div>
+</div>
+
+
   <div class="box" id="heading">
     <h1> <%= listTitle %> !</h1>
   </div>
@@ -32,8 +43,8 @@
 
       <form action="/" method="post" class = "item">
 
-        <input type="text" name="newItem" class="newItem" placeholder="New Item" autocomplete="off">
-        <input type="date" name="dueDate" class="newItem">
+        <input type="text" name="newItem" class="newItem" placeholder="New Item" autocomplete="off" required>
+        <input type="date" name="dueDate" class="newItem" required>
         <button type="submit" name="list" value= <%= listTitle %>>+</button>
     
       </form>
