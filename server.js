@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const app = express();
 const mongoose = require('mongoose')
+const dayjs = require('dayjs')
 const date = require(__dirname + "/date.js");
 
 app.set("view engine", "ejs")
@@ -71,24 +72,51 @@ router.get('/login',(req,res) =>{
     res.render('login',{kindof: "Today"})
 })
 
+router.get('/getItemById',(req,res) =>{
+    let id = req.query.id;
+    console.log(id);
+    Item.findOne({id: id},(err,foundItem) =>{
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        }
+        else{
+            //console.log(foundItem);
+            res.send(foundItem)
+        } 
+    })
+})
+
+router.post('/edit',async (req,res) =>{
+    console.log();
+    let id = req.body.saveId;
+    let newName = req.body.editItemText;
+    let newDate = req.body.editItemDate;
+    console.log(newName);
+    //Item.findByIdAndUpdate({id},{name: newName,date:newDate})
+    let doc = await Item.findById(id);
+    console.log(doc);
+    if(newName == null || newName == ""){
+        doc.date = newDate;
+    }
+    else{
+        doc.name = newName;
+        doc.date = newDate;
+    }
+    await doc.save();
+    res.redirect('/')
+})
 
 
 router.post('/', (req,res) =>{
     const itemName = req.body.newItem;
+    const dueDate = req.body.dueDate;
     const item = new Item({
-        name: itemName
+        name: itemName,
+        date: dueDate
     })
     item.save();
     res.redirect('/');
-    // if(req.body.list === "Work"){
-    //     workItems.push(item)
-    //     res.redirect('/work')
-    // }
-    // else{
-    //     items.push(item);
-    //     res.redirect('/');
-    // }
-    
 })
 
 

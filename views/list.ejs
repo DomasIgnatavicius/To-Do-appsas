@@ -12,11 +12,23 @@
       <form action="delete" method="post">
         <div class="item">
           <input type="checkbox" name="checkbox" value ="<%= item.id%>" onchange="this.form.submit()">
-          <div style="width: 400px;"><p> <%= item.name  %> </p></div>
-          <div><p>2002-22-22</p></div>
+          <div style="width: 300px;"><p> <%= item.name  %> </p></div>
+          <div style="width: 300px;"><p><%= item.date.toLocaleDateString("en-US",{weekday: "long", day: "numeric", month:"long"})  %></p></div>
+          <button type="button" value ="<%= item.id%>" class="editButon">Edit</button>
         </div>
       </form>
       <% }) %>
+
+
+      <div class="modal">
+        <form action="edit" method="post">
+          <input type="text" id="editName" name="editItemText" placeholder="">
+          <input type="text" onfocus="this.type = 'date'" class="newItem" name="editItemDate" id="editDate" placeholder="Type Date" required>
+          <br>
+          <button type="button" class="editButon" id="cancelEdit">Cancel</button>
+          <button type="submit" class="editButon" name="saveId" value="" id="saveEdit">Save</button>
+        </form>
+      </div>
 
       <form action="/" method="post" class = "item">
 
@@ -26,6 +38,6 @@
     
       </form>
   </div>
-
+  <script src="app.js"></script>
   <%- include("footer") -%>
 
