@@ -1,9 +1,7 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const router = express.Router();
 const app = express();
 const mongoose = require('mongoose')
-const dayjs = require('dayjs')
 const date = require(__dirname + "/date.js");
 
 app.set("view engine", "ejs")
@@ -26,8 +24,6 @@ const userSchema = {
 const Item = mongoose.model("Item", itemsSchema);
 const User = mongoose.model("User", userSchema);
 
-const defaultItems = [];
-
 let activeUser = null;
 
 
@@ -37,12 +33,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use("/",router);
 
 app.use(express.static("public"));
-
-
-const items = [];
-const workItems = [];
-
-
 
 router.get('/',(req,res) =>{
     let fullDate = date.getDate();
@@ -60,7 +50,6 @@ router.get('/',(req,res) =>{
                     res.redirect('/');
                 }
                 else{
-                    //console.log(foundItem);
                     console.log(activeUser);
                     console.log(foundUser);
                     res.render('list',{listTitle: fullDate, newListItems: foundItems, activeUser: foundUser.username})
